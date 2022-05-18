@@ -1,0 +1,5 @@
+.idea/*
+Sorting/.idea
+*.xml
+*.iml
+*.class
