@@ -23,7 +23,7 @@ class RadixSortTest {
     void countingSort1() {
         int[] result = {53, 89, 150, 36, 633, 233};
         int[] expectedResult = {36, 53, 89, 150, 233, 633};
-        RadixSort.countingSort(result);
+        RadixSort.countingSort(result, 1);
         assertArrayEquals(expectedResult, result);
     }
 
@@ -31,7 +31,23 @@ class RadixSortTest {
     void countingSort2() {
         int[] result = {121, 432, 564, 23, 1, 45, 788};
         int[] expectedResult = {1, 23, 45, 121, 432, 564, 788};
-        RadixSort.countingSort(result);
+        RadixSort.countingSort(result,1);
+        assertArrayEquals(expectedResult, result);
+    }
+
+    @Test
+    void radixSort1() {
+        int[] result = {53, 89, 150, 36, 633, 233};
+        int[] expectedResult = {36, 53, 89, 150, 233, 633};
+        RadixSort.radixSort(result);
+        assertArrayEquals(expectedResult, result);
+    }
+
+    @Test
+    void radixSort2() {
+        int[] result = {121, 432, 564, 23, 1, 45, 788};
+        int[] expectedResult = {1, 23, 45, 121, 432, 564, 788};
+        RadixSort.radixSort(result);
         assertArrayEquals(expectedResult, result);
     }
 }
