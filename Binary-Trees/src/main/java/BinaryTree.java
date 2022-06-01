@@ -2,10 +2,10 @@ public class BinaryTree {
 
     Node root;
 
-    public static BinaryTree createBinaryTree(int[] list) {
+    public static BinaryTree createBinaryTree(int[] binaryTreeElements) {
         BinaryTree bt = new BinaryTree();
-        for (int i = 0; i < list.length; i++) {
-            bt.add(list[i]);
+        for (int i = 0; i < binaryTreeElements.length; i++) {
+            bt.add(binaryTreeElements[i]);
         }
 
         return bt;
