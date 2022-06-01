@@ -46,4 +46,53 @@ public class BinaryTree {
         return containsNodeRecursive(current.right, value);
     }
 
+    public void delete (int value) {
+        root = deleteRecursive(root, value);
+    }
+
+    private Node deleteRecursive(Node current, int value) {
+        if (current == null) {
+            return null;
+        }
+
+        if (value == current.value) {
+            return deleteSingleNode(current);
+        } else if (value < current.value) {
+            return deleteRecursive(current.left, value);
+        } else {
+            return deleteRecursive(current.right, value);
+        }
+    }
+
+    private Node deleteSingleNode(Node current) {
+        boolean nodeHasNoChildren = (current.left == null && current.right == null);
+        boolean nodeOnlyHasLeftChild = (current.right == null);
+        boolean nodeOnlyHasRightChild = (current.left == null);
+
+        if (nodeHasNoChildren) {
+            return null;
+        } else if (nodeOnlyHasLeftChild) {
+            return current.left;
+        } else if (nodeOnlyHasRightChild) {
+            return current.right;
+        } else {
+            return deleteNodeWithTwoChildren(current);
+        }
+    }
+
+    private Node deleteNodeWithTwoChildren(Node current) {
+        int smallestValue = findSmallestValue(current.right);
+        current.value = smallestValue;
+        current.right = deleteRecursive(current.right, smallestValue);
+        return current;
+    }
+
+    private int findSmallestValue(Node root) {
+        if (root.left == null) {
+            return root.value;
+        } else {
+            return findSmallestValue(root.left);
+        }
+    }
+
 }
