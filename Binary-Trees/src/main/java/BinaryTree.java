@@ -31,4 +31,19 @@ public class BinaryTree {
         return current;
     }
 
+    public boolean containsNode(int value) {
+        return containsNodeRecursive(root, value);
+    }
+
+    private boolean containsNodeRecursive(Node current, int value) {
+        if (current == null) {
+            return false;
+        } else if (value == current.value) {
+            return true;
+        } else if (value < current.value) {
+            return containsNodeRecursive(current.left, value);
+        }
+        return containsNodeRecursive(current.right, value);
+    }
+
 }
